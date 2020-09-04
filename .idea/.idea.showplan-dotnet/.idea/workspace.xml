@@ -15,14 +15,14 @@
       <list>
         <option value="$PROJECT_DIR$/src/Showplan/AdaptiveJoinType.cs" />
         <option value="$PROJECT_DIR$/src/Showplan/AffectingConvertWarningTypeConvertIssue.cs" />
-        <option value="$PROJECT_DIR$/src/Showplan/showplanxml.cs" />
         <option value="$PROJECT_DIR$/tests/Showplan.Tests/Showplan.Tests.csproj" />
-        <option value="$PROJECT_DIR$/tests/Showplan.Tests/UnitTest1.cs" />
         <option value="$PROJECT_DIR$/tests/Showplan.Tests/plans/issue1.sqlplan" />
         <option value="$PROJECT_DIR$/tests/Showplan.Tests/plans/HJMchor2.sqlplan" />
         <option value="$PROJECT_DIR$/tests/Showplan.Tests/plans/parallelism.sqlplan" />
         <option value="$PROJECT_DIR$/tests/Showplan.Tests/plans/parallelism2.sqlplan" />
         <option value="$PROJECT_DIR$/tests/Showplan.Tests/plans/S1uW0oS3.sqlplan" />
+        <option value="$PROJECT_DIR$/tests/Showplan.Tests/UnitTest1.cs" />
+        <option value="$PROJECT_DIR$/src/Showplan/showplanxml.cs" />
       </list>
     </option>
   </component>
@@ -34,6 +34,13 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="RiderDotCoverContinuousTestingPageId" />
   </component>
   <component name="RunManager" selected=".NET Project.Showplan.Tests">
     <configuration name="Showplan.Tests" type="DotNetProject" factoryName=".NET Project">
@@ -63,7 +70,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1599227937347</updated>
-      <workItem from="1599227939142" duration="1657000" />
+      <workItem from="1599227939142" duration="6310000" />
     </task>
     <servers />
   </component>
@@ -74,5 +81,31 @@
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1865" height="266" key="GridCell.Tab.0.bottom" timestamp="1599232072807">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state width="1865" height="266" key="GridCell.Tab.0.bottom/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1599232072807" />
+    <state width="1865" height="266" key="GridCell.Tab.0.center" timestamp="1599232072807">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state width="1865" height="266" key="GridCell.Tab.0.center/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1599232072807" />
+    <state width="1865" height="266" key="GridCell.Tab.0.left" timestamp="1599232072806">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state width="1865" height="266" key="GridCell.Tab.0.left/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1599232072806" />
+    <state width="1865" height="266" key="GridCell.Tab.0.right" timestamp="1599232072807">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state width="1865" height="266" key="GridCell.Tab.0.right/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1599232072807" />
+    <state x="671" y="78" key="SettingsEditor" timestamp="1599234514478">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="671" y="78" key="SettingsEditor/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1599234514478" />
+    <state x="866" y="27" width="840" height="1032" key="search.everywhere.popup" timestamp="1599234622113">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="866" y="27" width="840" height="1032" key="search.everywhere.popup/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1599234622113" />
   </component>
 </project>
