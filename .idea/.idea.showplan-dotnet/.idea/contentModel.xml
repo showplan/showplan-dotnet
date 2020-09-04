@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\phils\.nuget\packages\microsoft.net.test.sdk\16.6.1\build\netcoreapp2.1" t="Include">
+      <e p="Microsoft.NET.Test.Sdk.Program.cs" t="Include" />
+    </e>
+    <e p="C:\Users\phils\.nuget\packages\microsoft.testplatform.testhost\16.6.1\build\netcoreapp2.1\x64\testhost.dll" t="Include" />
+    <e p="C:\Users\phils\.nuget\packages\microsoft.testplatform.testhost\16.6.1\build\netcoreapp2.1\x64\testhost.exe" t="Include" />
+    <e p="C:\Users\phils\.nuget\packages\xunit.runner.visualstudio\2.4.3\build\netcoreapp2.1\xunit.runner.reporters.netcoreapp10.dll" t="Include" />
+    <e p="C:\Users\phils\.nuget\packages\xunit.runner.visualstudio\2.4.3\build\netcoreapp2.1\xunit.runner.utility.netcoreapp10.dll" t="Include" />
+    <e p="C:\Users\phils\.nuget\packages\xunit.runner.visualstudio\2.4.3\build\netcoreapp2.1\xunit.runner.visualstudio.dotnetcore.testadapter.dll" t="Include" />
+    <e p="C:\Users\phils\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\phils\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_showplan-dotnet.-1684417012.00" t="ExcludeRecursive" />
+    <e p="R:\Projects\showplan\showplan-dotnet" t="IncludeFlat">
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="showplan-dotnet.sln" t="IncludeFlat" />
+      <e p="src" t="Include">
+        <e p="showplan" t="IncludeRecursive">
+          <e p="bin" t="ExcludeRecursive" />
+          <e p="obj" t="ExcludeRecursive">
+            <e p="Debug" t="Include">
+              <e p="net5.0" t="Include">
+                <e p="Showplan.AssemblyInfo.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Showplan.csproj" t="IncludeRecursive" />
+          <e p="showplanxml.cs" t="Include" />
+        </e>
+      </e>
+      <e p="tests" t="Include">
+        <e p="Showplan.Tests" t="IncludeRecursive">
+          <e p="bin" t="ExcludeRecursive" />
+          <e p="obj" t="ExcludeRecursive">
+            <e p="Debug" t="Include">
+              <e p="net5.0" t="Include">
+                <e p="Showplan.Tests.AssemblyInfo.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="plans" t="Include">
+            <e p="actual-execution-plan.sqlplan" t="Include" />
+            <e p="adaptive-join.sqlplan" t="Include" />
+            <e p="column-store-index.sqlplan" t="Include" />
+            <e p="concat-sort-stream-parallel.sqlplan" t="Include" />
+            <e p="estimated-execution-plan.sqlplan" t="Include" />
+            <e p="hash-match-join.sqlplan" t="Include" />
+            <e p="HJMchor2.sqlplan" t="Include" />
+            <e p="How many upvotes do I have for each tag.sqlplan" t="Include" />
+            <e p="index-insert-create.sqlplan" t="Include" />
+            <e p="inserted-deleted-scan.sqlplan" t="Include" />
+            <e p="issue1.sqlplan" t="Include" />
+            <e p="merge-interval-constant-scan.sqlplan" t="Include" />
+            <e p="multi-batch-with-multi-statements.sqlplan" t="Include" />
+            <e p="multi-convert.sqlplan" t="Include" />
+            <e p="nci_plan_2012.sqlplan" t="Include" />
+            <e p="nested-loops.sqlplan" t="Include" />
+            <e p="parallelism.sqlplan" t="Include" />
+            <e p="parallelism2.sqlplan" t="Include" />
+            <e p="referential-integretity-operator.sqlplan" t="Include" />
+            <e p="remote-query.sqlplan" t="Include" />
+            <e p="remote-update-scan.sqlplan" t="Include" />
+            <e p="row-count-spool.sqlplan" t="Include" />
+            <e p="S1uW0oS3.sqlplan" t="Include" />
+            <e p="scalar-convert-with-index-seek-and-warning.sqlplan" t="Include" />
+            <e p="segment-sequence.sqlplan" t="Include" />
+            <e p="simple-index-seek.sqlplan" t="Include" />
+            <e p="simple-update.sqlplan" t="Include" />
+            <e p="simple.sqlplan" t="Include" />
+            <e p="spill-warning.sqlplan" t="Include" />
+            <e p="spilltotempdb.sqlplan" t="Include" />
+            <e p="stream-aggregate-with-rollup.sqlplan" t="Include" />
+            <e p="table-scan.sqlplan" t="Include" />
+            <e p="table-valued-function-2.sqlplan" t="Include" />
+            <e p="table-valued-function.sqlplan" t="Include" />
+            <e p="topsort-with-table-scan.sqlplan" t="Include" />
+            <e p="update-assert-collapse-table-spool-split-merge-join.sqlplan" t="Include" />
+            <e p="users-with-post-count-and-comment-count-math.sqlplan" t="Include" />
+            <e p="users-with-post-count-and-comment-count.sqlplan" t="Include" />
+            <e p="viewclustered-index-seek.sqlplan" t="Include" />
+            <e p="window-spool-segment-sequence-project.sqlplan" t="Include" />
+          </e>
+          <e p="Showplan.Tests.csproj" t="IncludeRecursive" />
+          <e p="UnitTest1.cs" t="Include" />
+        </e>
+      </e>
+    </e>
+  </component>
+</project>
