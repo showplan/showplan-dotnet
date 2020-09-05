@@ -16,24 +16,192 @@
       <e p="showplan-dotnet.sln" t="IncludeFlat" />
       <e p="src" t="Include">
         <e p="showplan" t="IncludeRecursive">
+          <e p="AffectingConvertWarning.cs" t="Include" />
+          <e p="AffectingConvertWarningTypeConvertIssue.cs" t="Include" />
+          <e p="ArithmeticOperation.cs" t="Include" />
+          <e p="BaseStmtInfo.cs" t="Include" />
+          <e p="BaseStmtInfoTypeStatementOptmEarlyAbortReason.cs" t="Include" />
           <e p="bin" t="ExcludeRecursive" />
+          <e p="CloneAccessScope.cs" t="Include" />
+          <e p="ClrFunction.cs" t="Include" />
+          <e p="Column.cs" t="Include" />
+          <e p="ColumnGroup.cs" t="Include" />
+          <e p="ColumnGroupTypeUsage.cs" t="Include" />
+          <e p="ColumnReference.cs" t="Include" />
+          <e p="ColumnReferenceList.cs" t="Include" />
+          <e p="CompareOp.cs" t="Include" />
+          <e p="CursorPlan.cs" t="Include" />
+          <e p="CursorPlanTypeCursorConcurrency.cs" t="Include" />
+          <e p="CursorPlanTypeOperation.cs" t="Include" />
+          <e p="CursorPlanTypeOperationOperation.cs" t="Include" />
+          <e p="CursorType.cs" t="Include" />
+          <e p="DatabaseObject.cs" t="Include" />
+          <e p="DefinedValuesListTypeDefinedValue.cs" t="Include" />
+          <e p="DefinedValuesListTypeDefinedValueValueVector.cs" t="Include" />
+          <e p="ExecutionMode.cs" t="Include" />
+          <e p="Extras" t="Include">
+            <e p="ColumnReferenceExtensions.cs" t="Include" />
+            <e p="QueryPlanExtensions.cs" t="Include" />
+            <e p="RelOpExtensions.cs" t="Include" />
+            <e p="ScanRangeExtensions.cs" t="Include" />
+            <e p="SeekPredicateExtensions.cs" t="Include" />
+            <e p="ShowplanXmlExtensions.cs" t="Include" />
+          </e>
+          <e p="ForeignKeyReferenceCheck.cs" t="Include" />
+          <e p="Function.cs" t="Include" />
+          <e p="GuessedSelectivity.cs" t="Include" />
+          <e p="HashSpillDetails.cs" t="Include" />
+          <e p="IndexKind.cs" t="Include" />
+          <e p="InternalInfo.cs" t="Include" />
+          <e p="ItemChoice.cs" t="Include" />
+          <e p="LogicalOp.cs" t="Include" />
+          <e p="LogicalOperation.cs" t="Include" />
+          <e p="MemoryFractions.cs" t="Include" />
+          <e p="MemoryGrant.cs" t="Include" />
+          <e p="MemoryGrantWarning.cs" t="Include" />
+          <e p="MemoryGrantWarningInfo.cs" t="Include" />
+          <e p="MissingIndex.cs" t="Include" />
+          <e p="MissingIndexGroup.cs" t="Include" />
           <e p="obj" t="ExcludeRecursive">
             <e p="Debug" t="Include">
-              <e p="net5.0" t="Include">
+              <e p="netstandard2.0" t="Include">
                 <e p="Showplan.AssemblyInfo.cs" t="Include" />
               </e>
             </e>
           </e>
+          <e p="OptimizerHardwareDependentProperties.cs" t="Include" />
+          <e p="Order.cs" t="Include" />
+          <e p="OrderByTypeOrderByColumn.cs" t="Include" />
+          <e p="ParallelismTypeActivation.cs" t="Include" />
+          <e p="ParallelismTypeActivationType.cs" t="Include" />
+          <e p="ParallelismTypeBrickRouting.cs" t="Include" />
+          <e p="Partition.cs" t="Include" />
+          <e p="PhysicalOp.cs" t="Include" />
+          <e p="QueryExecTime.cs" t="Include" />
+          <e p="QueryPlan.cs" t="Include" />
+          <e p="ReceivePlanTypeOperation.cs" t="Include" />
+          <e p="ReceivePlanTypeOperationOperationType.cs" t="Include" />
+          <e p="RelOps" t="Include">
+            <e p="AdaptiveJoinType.cs" t="Include" />
+            <e p="BatchHashTableBuild.cs" t="Include" />
+            <e p="Bitmap.cs" t="Include" />
+            <e p="Collapse.cs" t="Include" />
+            <e p="ComputeScalar.cs" t="Include" />
+            <e p="Concat.cs" t="Include" />
+            <e p="ConstantScan.cs" t="Include" />
+            <e p="CreateIndex.cs" t="Include" />
+            <e p="Filter.cs" t="Include" />
+            <e p="ForeignKeyReferencesCheck.cs" t="Include" />
+            <e p="Generic.cs" t="Include" />
+            <e p="Hash.cs" t="Include" />
+            <e p="IndexScan.cs" t="Include" />
+            <e p="Merge.cs" t="Include" />
+            <e p="NestedLoops.cs" t="Include" />
+            <e p="Parallelism.cs" t="Include" />
+            <e p="Put.cs" t="Include" />
+            <e p="RelOp.cs" t="Include" />
+            <e p="RelOpBase.cs" t="Include" />
+            <e p="Remote.cs" t="Include" />
+            <e p="RemoteFetch.cs" t="Include" />
+            <e p="RemoteModify.cs" t="Include" />
+            <e p="RemoteQuery.cs" t="Include" />
+            <e p="RemoteRange.cs" t="Include" />
+            <e p="Rowset.cs" t="Include" />
+            <e p="ScalarInsert.cs" t="Include" />
+            <e p="Segment.cs" t="Include" />
+            <e p="Sequence.cs" t="Include" />
+            <e p="SimpleIteratorOneChild.cs" t="Include" />
+            <e p="SimpleUpdate.cs" t="Include" />
+            <e p="Sort.cs" t="Include" />
+            <e p="Split.cs" t="Include" />
+            <e p="Spool.cs" t="Include" />
+            <e p="StreamAggregate.cs" t="Include" />
+            <e p="Switch.cs" t="Include" />
+            <e p="TableScan.cs" t="Include" />
+            <e p="TableValuedFunction.cs" t="Include" />
+            <e p="Top.cs" t="Include" />
+            <e p="TopSort.cs" t="Include" />
+            <e p="Udx.cs" t="Include" />
+            <e p="Update.cs" t="Include" />
+            <e p="Window.cs" t="Include" />
+            <e p="WindowAggregate.cs" t="Include" />
+          </e>
+          <e p="RollupInfo.cs" t="Include" />
+          <e p="RollupLevel.cs" t="Include" />
+          <e p="RunTimeInformationTypeRunTimeCountersPerThread.cs" t="Include" />
+          <e p="RunTimePartitionSummary.cs" t="Include" />
+          <e p="RunTimePartitionSummaryTypePartitionsAccessed.cs" t="Include" />
+          <e p="RunTimePartitionSummaryTypePartitionsAccessedPartitionRange.cs" t="Include" />
+          <e p="Scalar.cs" t="Include" />
+          <e p="ScalarExpression.cs" t="Include" />
+          <e p="Scalars" t="Include">
+            <e p="Aggregate.cs" t="Include" />
+            <e p="Arithmetic.cs" t="Include" />
+            <e p="AssignType.cs" t="Include" />
+            <e p="Compare.cs" t="Include" />
+            <e p="Conditional.cs" t="Include" />
+            <e p="Const.cs" t="Include" />
+            <e p="Convert.cs" t="Include" />
+            <e p="Ident.cs" t="Include" />
+            <e p="Intrinsic.cs" t="Include" />
+            <e p="Logical.cs" t="Include" />
+            <e p="MultAssign.cs" t="Include" />
+            <e p="ScalarExpressionList.cs" t="Include" />
+            <e p="ScalarSequence.cs" t="Include" />
+            <e p="Subquery.cs" t="Include" />
+            <e p="UdAggregate.cs" t="Include" />
+            <e p="Udf.cs" t="Include" />
+            <e p="UdtMethod.cs" t="Include" />
+          </e>
+          <e p="ScanRange.cs" t="Include" />
+          <e p="SeekPredicate.cs" t="Include" />
+          <e p="SeekPredicateBase.cs" t="Include" />
+          <e p="SeekPredicateNew.cs" t="Include" />
+          <e p="SeekPredicatePart.cs" t="Include" />
+          <e p="SeekPredicates.cs" t="Include" />
+          <e p="SetOptions.cs" t="Include" />
+          <e p="SetPredicate.cs" t="Include" />
+          <e p="SetPredicateElement.cs" t="Include" />
           <e p="Showplan.csproj" t="IncludeRecursive" />
           <e p="showplanxml.cs" t="Include" />
+          <e p="SingleColumnReference.cs" t="Include" />
+          <e p="SortSpillDetails.cs" t="Include" />
+          <e p="SpillToTempDb.cs" t="Include" />
+          <e p="StarJoinInfo.cs" t="Include" />
+          <e p="StarJoinInfoTypeOperationType.cs" t="Include" />
+          <e p="StatementBlocks" t="Include">
+            <e p="StmtBlock.cs" t="Include" />
+            <e p="StmtCond.cs" t="Include" />
+            <e p="StmtCondTypeCondition.cs" t="Include" />
+            <e p="StmtCondTypeElse.cs" t="Include" />
+            <e p="StmtCondTypeThen.cs" t="Include" />
+            <e p="StmtCursor.cs" t="Include" />
+            <e p="StmtReceive.cs" t="Include" />
+            <e p="StmtSimple.cs" t="Include" />
+            <e p="StmtUseDb.cs" t="Include" />
+          </e>
+          <e p="StatsInfo.cs" t="Include" />
+          <e p="Storage.cs" t="Include" />
+          <e p="SubqueryOperation.cs" t="Include" />
+          <e p="ThreadReservation.cs" t="Include" />
+          <e p="ThreadStat.cs" t="Include" />
+          <e p="TraceFlag.cs" t="Include" />
+          <e p="TraceFlagList.cs" t="Include" />
+          <e p="TraceFlagScope.cs" t="Include" />
+          <e p="UnmatchedIndexes.cs" t="Include" />
+          <e p="WaitStat.cs" t="Include" />
+          <e p="WaitWarning.cs" t="Include" />
+          <e p="WaitWarningWaitType.cs" t="Include" />
+          <e p="Warnings.cs" t="Include" />
         </e>
       </e>
       <e p="tests" t="Include">
         <e p="Showplan.Tests" t="IncludeRecursive">
+          <e p="AllTestFilesParserTests.cs" t="Include" />
           <e p="bin" t="ExcludeRecursive" />
           <e p="obj" t="ExcludeRecursive">
             <e p="Debug" t="Include">
-              <e p="net5.0" t="Include">
+              <e p="netcoreapp3.1" t="Include">
                 <e p="Showplan.Tests.AssemblyInfo.cs" t="Include" />
               </e>
             </e>
@@ -81,7 +249,6 @@
             <e p="window-spool-segment-sequence-project.sqlplan" t="Include" />
           </e>
           <e p="Showplan.Tests.csproj" t="IncludeRecursive" />
-          <e p="UnitTest1.cs" t="Include" />
         </e>
       </e>
     </e>
