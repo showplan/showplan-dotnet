@@ -22,6 +22,7 @@ jobs:
         source-url: https://nuget.pkg.github.com/showplan/index.json
       env:
         NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        DOTNET_SYSTEM_NET_HTTP_USESOCKETSHTTPHANDLER: 0
     - name: Build project
       run: dotnet build -c Release
     - name: Test project
