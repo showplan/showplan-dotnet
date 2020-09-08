@@ -8,7 +8,7 @@ on:
     branches:
       - master # CI (ci package)
     tags:
-      - v\\d+\\.\\d+     # CD (release package)
+      - v[0-9]+.[0-9]+     # CD (release package)
 
 jobs:
   build:
