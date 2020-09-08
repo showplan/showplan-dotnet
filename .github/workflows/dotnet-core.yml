@@ -1,0 +1,36 @@
+name: CI/CD
+
+on:
+  pull_request:
+    branches:
+      - master # CI (pr validation)
+  push:
+    branches:
+      - master # CI (ci package)
+    tags:
+      - v\\d+\\.\\d+     # CD (release package)
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v1
+    - name: Setup .NET Core @Latest
+      uses: actions/setup-dotnet@v1
+      with:
+        source-url: https://nuget.pkg.github.com/showplan/index.json
+      env:
+        NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+    - name: Build project
+      run: dotnet build -c Release
+    - name: Test project
+      run: dotnet test -c Release
+    - name: Package for nuget
+      run: dotnet pack src/Showplan -c Release
+    - name: Publish to github packages
+      run: dotnet nuget push src/Showplan/bin/Release/*.nupkg --skip-duplicate --no-symbols true
+      if: github.event_name == 'push' && startswith(github.ref, 'refs/heads')
+    - name: Publish to nuget.org
+      run: dotnet nuget push src/Showplan/Release/*.nupkg -k ${{secrets.NUGET_ORG_API_KEY}} -s https://api.nuget.org/v3/index.json
+      if: github.event_name == 'push' && startswith(github.ref, 'refs/tags')
