@@ -12,7 +12,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-18.04
+    runs-on: windows-latest
     steps:
     - name: Checkout repository
       uses: actions/checkout@v1
@@ -22,17 +22,15 @@ jobs:
         source-url: https://nuget.pkg.github.com/showplan/index.json
       env:
         NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-        DOTNET_SYSTEM_NET_HTTP_USESOCKETSHTTPHANDLER: 0
     - name: Build project
       run: dotnet build -c Release
     - name: Test project
       run: dotnet test -c Release
     - name: Package for nuget
       run: dotnet pack src/Showplan -c Release
-    - run: dotnet nuget list source
     - name: Publish to github packages
-      run: dotnet nuget push src/Showplan/bin/Release/*.nupkg --skip-duplicate --no-symbols true --source "Source"
+      run: dotnet nuget push "src\Showplan\bin\Release\*.nupkg" --skip-duplicate --no-symbols true 
       if: github.event_name == 'push' && startswith(github.ref, 'refs/heads')
     - name: Publish to nuget.org
-      run: dotnet nuget push src/Showplan/Release/*.nupkg -k ${{secrets.NUGET_ORG_API_KEY}} -s https://api.nuget.org/v3/index.json
+      run: dotnet nuget push "src\Showplan\Release\*.nupkg" -k ${{secrets.NUGET_ORG_API_KEY}} -s https://api.nuget.org/v3/index.json
       if: github.event_name == 'push' && startswith(github.ref, 'refs/tags')
