@@ -2,7 +2,7 @@
 using System.Linq;
 using Showplan.StatementBlocks;
 
-namespace Showplan.Extras
+namespace Showplan.Tests
 {
     public static class ShowplanXmlExtensions
     {

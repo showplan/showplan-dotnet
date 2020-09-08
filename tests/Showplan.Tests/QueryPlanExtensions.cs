@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Showplan.RelOps;
 
-namespace Showplan.Extras
+namespace Showplan.Tests
 {
     public static class QueryPlanExtensions
     {
@@ -9,7 +9,7 @@ namespace Showplan.Extras
         {
             return GetFlattenedRelOpsRecurse(queryPlan.RelOp);
 
-            List<RelOp> GetFlattenedRelOpsRecurse(RelOp current)
+            static List<RelOp> GetFlattenedRelOpsRecurse(RelOp current)
             {
                 var items = new List<RelOp> {current};
 
