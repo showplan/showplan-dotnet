@@ -134,8 +134,5 @@ namespace Showplan
         /// <remarks/>
         [XmlIgnore()]
         public bool ContainsInterleavedExecutionCandidatesSpecified { get; set; }
-
-        [XmlIgnore()]
-        public StmtSimple Statement { get; set; }
     }
 }

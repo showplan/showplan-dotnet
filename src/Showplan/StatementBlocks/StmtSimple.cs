@@ -11,18 +11,8 @@ namespace Showplan.StatementBlocks
     [XmlType("StmtSimpleType", Namespace = "http://schemas.microsoft.com/sqlserver/2004/07/showplan")]
     public class StmtSimple : BaseStmtInfo
     {
-        private QueryPlan _queryPlan;
-
         /// <remarks/>
-        public QueryPlan QueryPlan
-        {
-            get => _queryPlan;
-            set
-            {
-                _queryPlan.Statement = this;
-                _queryPlan = value;
-            }
-        }
+        public QueryPlan QueryPlan { get; set; }
 
         /// <remarks/>
         [XmlElement("UDF")]
