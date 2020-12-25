@@ -1,5 +1,6 @@
 ﻿using System.Xml.Serialization;
 using Showplan.RelOps;
+using Showplan.StatementBlocks;
 
 namespace Showplan
 {
@@ -133,5 +134,8 @@ namespace Showplan
         /// <remarks/>
         [XmlIgnore()]
         public bool ContainsInterleavedExecutionCandidatesSpecified { get; set; }
+
+        [XmlIgnore()]
+        public StmtSimple Statement { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Runtime.Serialization;
 using System.Xml.Serialization;
 
 namespace Showplan.RelOps
@@ -212,5 +213,17 @@ namespace Showplan.RelOps
         /// <remarks/>
         [XmlIgnore()]
         public bool EstimatedJoinTypeSpecified { get; set; }
+        
+        public override string ToString()
+        {
+            if (!(this.Item is Rowset rowset) || rowset.Object.Length <= 0)
+            {
+                return $"{PhysicalOp} - [{NodeId}]";
+            }
+
+            var o = rowset.Object[0];
+            var scannedObject = string.IsNullOrWhiteSpace(o.Index) ? o.Table : o.Index;
+            return $"{PhysicalOp} - {scannedObject}";
+        }
     }
 }

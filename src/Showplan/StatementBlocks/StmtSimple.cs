@@ -1,4 +1,5 @@
-﻿using System.Xml.Serialization;
+﻿using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 namespace Showplan.StatementBlocks
 {
@@ -10,8 +11,18 @@ namespace Showplan.StatementBlocks
     [XmlType("StmtSimpleType", Namespace = "http://schemas.microsoft.com/sqlserver/2004/07/showplan")]
     public class StmtSimple : BaseStmtInfo
     {
+        private QueryPlan _queryPlan;
+
         /// <remarks/>
-        public QueryPlan QueryPlan { get; set; }
+        public QueryPlan QueryPlan
+        {
+            get => _queryPlan;
+            set
+            {
+                _queryPlan.Statement = this;
+                _queryPlan = value;
+            }
+        }
 
         /// <remarks/>
         [XmlElement("UDF")]

@@ -1,4 +1,6 @@
-﻿using System.Xml.Serialization;
+﻿using System;
+using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 namespace Showplan.RelOps
 {
@@ -49,8 +51,7 @@ namespace Showplan.RelOps
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [XmlType("RelOpBaseType", Namespace = "http://schemas.microsoft.com/sqlserver/2004/07/showplan")]
-    public class RelOpBase
-    {
+    public class RelOpBase {
         /// <remarks/>
         [XmlArrayItem("DefinedValue", IsNullable = false)]
         public DefinedValuesListTypeDefinedValue[] DefinedValues { get; set; }
