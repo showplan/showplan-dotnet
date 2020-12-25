@@ -8,7 +8,7 @@ on:
     branches:
       - master # CI (ci package)
     tags:
-      - v\\d+\\.\\d+     # CD (release package)
+      - v[0-9]+.[0-9]+     # CD (release package)
 
 jobs:
   build:
@@ -32,5 +32,5 @@ jobs:
       run: dotnet nuget push "src\Showplan\bin\Release\*.nupkg" --skip-duplicate --no-symbols true 
       if: github.event_name == 'push' && startswith(github.ref, 'refs/heads')
     - name: Publish to nuget.org
-      run: dotnet nuget push "src\Showplan\Release\*.nupkg" -k ${{secrets.NUGET_ORG_API_KEY}} -s https://api.nuget.org/v3/index.json
+      run: dotnet nuget push "src\Showplan\bin\Release\*.nupkg" -k ${{secrets.NUGET_ORG_API_KEY}} -s https://api.nuget.org/v3/index.json
       if: github.event_name == 'push' && startswith(github.ref, 'refs/tags')
