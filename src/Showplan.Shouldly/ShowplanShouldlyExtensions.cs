@@ -13,9 +13,9 @@ namespace Showplan.Shouldly
             statement.AssertAwesomely(a => a.StatementSubTreeCost < cost, statement.StatementSubTreeCost, cost);
         }
 
-        public static void ShouldNotHaveAnyTableScans(this QueryPlan queryPlan, string? customMessage = null)
+        public static void ShouldNotHaveAnyTableScans(this StmtSimple statement, string? customMessage = null)
         {
-            var flattenedRelOps = queryPlan.GetFlattenedRelOps();
+            var flattenedRelOps = statement.QueryPlan.GetFlattenedRelOps();
             var tablesScans = flattenedRelOps.Where(i => i.PhysicalOp == PhysicalOp.TableScan).ToList();
             if (tablesScans.Any())
             {

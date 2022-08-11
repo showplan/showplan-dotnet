@@ -20,11 +20,17 @@ namespace ShowPlan.EntityFrameworkCore.Interceptor
             _foundShowPlanString = foundShowPlanString;
         }
 
+        public override InterceptionResult<DbDataReader> ReaderExecuting(DbCommand command, CommandEventData eventData, InterceptionResult<DbDataReader> result)
+        {
+            command.CommandText = $"SET STATISTICS XML ON{Environment.NewLine}{command.CommandText}";
+            return base.ReaderExecuting(command, eventData, result);
+        }
+
         public override ValueTask<InterceptionResult<DbDataReader>> ReaderExecutingAsync(DbCommand command,
             CommandEventData eventData, InterceptionResult<DbDataReader> result,
             CancellationToken cancellationToken = new())
         {
-            command.CommandText = "SET STATISTICS XML ON" + Environment.NewLine + command.CommandText;
+            command.CommandText = $"SET STATISTICS XML ON{Environment.NewLine}{command.CommandText}";
 
             return base.ReaderExecutingAsync(command, eventData, result, cancellationToken);
         }

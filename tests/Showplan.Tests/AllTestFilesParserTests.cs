@@ -22,20 +22,6 @@ namespace Showplan.Tests
             var statements = showplan
                 .GetStatementsWithQueryPlans()
                 .ToList();
-
-            statements.FirstOrDefault()?.ShouldSatisfyAllConditions(
-                s => s.ShouldCostLessThan(100),
-                s => s.QueryPlan.ShouldNotHaveAnyTableScans()
-            );
-
-            // verify that we can at least get the estimated total cost of all statements
-            var allRelOps = statements.SelectMany(i => i.QueryPlan.GetFlattenedRelOps()).ToList();
-            foreach (var op in allRelOps)
-            {
-                op
-                    .EstimatedTotalCost()
-                    .ShouldBeGreaterThanOrEqualTo(0);
-            }
         }
 
         public static IEnumerable<object[]> Data => Directory.GetFiles("plans").Select(i => new object[] {i});

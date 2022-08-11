@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Showplan.Tests.Data
+﻿namespace Showplan.Tests.Interceptor7.Data
 {
     public partial class Tag
     {

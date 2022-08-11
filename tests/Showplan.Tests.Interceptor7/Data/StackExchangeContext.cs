@@ -1,68 +1,61 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-#nullable disable
-
-namespace Showplan.Tests.Data
+namespace Showplan.Tests.Interceptor7.Data
 {
-    public partial class StackOverflowContext : DbContext
+    public partial class StackExchangeContext : DbContext
     {
-        public StackOverflowContext()
+        public StackExchangeContext()
         {
         }
 
-        public StackOverflowContext(DbContextOptions<StackOverflowContext> options)
+        public StackExchangeContext(DbContextOptions<StackExchangeContext> options)
             : base(options)
         {
         }
 
-        public virtual DbSet<Badge> Badges { get; set; }
-        public virtual DbSet<Comment> Comments { get; set; }
-        public virtual DbSet<LinkType> LinkTypes { get; set; }
-        public virtual DbSet<Post> Posts { get; set; }
-        public virtual DbSet<PostHistory> PostHistories { get; set; }
-        public virtual DbSet<PostHistoryType> PostHistoryTypes { get; set; }
-        public virtual DbSet<PostLink> PostLinks { get; set; }
-        public virtual DbSet<PostType> PostTypes { get; set; }
-        public virtual DbSet<Tag> Tags { get; set; }
-        public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<Vote> Votes { get; set; }
-        public virtual DbSet<VoteType> VoteTypes { get; set; }
+        public virtual DbSet<Badge> Badges { get; set; } = null!;
+        public virtual DbSet<Comment> Comments { get; set; } = null!;
+        public virtual DbSet<LinkType> LinkTypes { get; set; } = null!;
+        public virtual DbSet<Post> Posts { get; set; } = null!;
+        public virtual DbSet<PostHistory> PostHistories { get; set; } = null!;
+        public virtual DbSet<PostHistoryType> PostHistoryTypes { get; set; } = null!;
+        public virtual DbSet<PostLink> PostLinks { get; set; } = null!;
+        public virtual DbSet<PostTag> PostTags { get; set; } = null!;
+        public virtual DbSet<PostType> PostTypes { get; set; } = null!;
+        public virtual DbSet<Tag> Tags { get; set; } = null!;
+        public virtual DbSet<User> Users { get; set; } = null!;
+        public virtual DbSet<Vote> Votes { get; set; } = null!;
+        public virtual DbSet<VoteType> VoteTypes { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https: //go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("server=.;database=math;integrated security=true");
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+                optionsBuilder.UseSqlServer("Data Source=.;Initial Catalog=sports.stackexchange.com;integrated security=true;TrustServerCertificate=True");
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
-
             modelBuilder.Entity<Badge>(entity =>
             {
-                entity.HasIndex(e => new {e.Id, e.UserId}, "IX_Badges__Id_UserId");
+                entity.Property(e => e.Class).HasComment("The class of the badge. 1 = Gold, 2 = Silver, 3 = Bronze.");
 
                 entity.Property(e => e.Date).HasColumnType("datetime");
 
-                entity.Property(e => e.Name)
-                    .IsRequired()
-                    .HasMaxLength(40);
+                entity.Property(e => e.Name).HasMaxLength(40);
+
+                entity.Property(e => e.TagBased).HasComment("True if badge is for a tag, otherwise it is a named badge.");
             });
 
             modelBuilder.Entity<Comment>(entity =>
             {
-                entity.HasIndex(e => new {e.Id, e.PostId}, "IX_Comments__Id_PostId");
-
-                entity.HasIndex(e => new {e.Id, e.UserId}, "IX_Comments__Id_UserId");
+                entity.Property(e => e.ContentLicense).HasMaxLength(250);
 
                 entity.Property(e => e.CreationDate).HasColumnType("datetime");
 
-                entity.Property(e => e.Text)
-                    .IsRequired()
-                    .HasMaxLength(700);
+                entity.Property(e => e.Text).HasMaxLength(700);
 
                 entity.HasOne(d => d.Post)
                     .WithMany(p => p.Comments)
@@ -79,39 +72,48 @@ namespace Showplan.Tests.Data
             modelBuilder.Entity<LinkType>(entity =>
             {
                 entity.Property(e => e.Type)
-                    .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false);
             });
 
             modelBuilder.Entity<Post>(entity =>
             {
-                entity.HasIndex(e => new {e.Id, e.AcceptedAnswerId}, "IX_Posts_Id_AcceptedAnswerId")
+                entity.HasIndex(e => new { e.Id, e.AcceptedAnswerId }, "IX_Posts_Id_AcceptedAnswerId")
                     .IsUnique();
 
-                entity.HasIndex(e => new {e.Id, e.OwnerUserId}, "IX_Posts_Id_OwnerUserId")
+                entity.HasIndex(e => new { e.Id, e.OwnerUserId }, "IX_Posts_Id_OwnerUserId")
                     .IsUnique();
 
-                entity.HasIndex(e => new {e.Id, e.ParentId}, "IX_Posts_Id_ParentId")
+                entity.HasIndex(e => new { e.Id, e.ParentId }, "IX_Posts_Id_ParentId")
                     .IsUnique();
 
-                entity.HasIndex(e => new {e.Id, e.PostTypeId}, "IX_Posts__Id_PostTypeId");
+                entity.Property(e => e.AcceptedAnswerId).HasComment("Id of the accepted anser. Only present if PostTypeId = 1 (question).");
 
-                entity.HasIndex(e => e.PostTypeId, "IX_Posts__PostType");
-
-                entity.Property(e => e.Body).IsRequired();
+                entity.Property(e => e.Body).HasComment("The body as rendered HTML.");
 
                 entity.Property(e => e.ClosedDate).HasColumnType("datetime");
 
-                entity.Property(e => e.CommunityOwnedDate).HasColumnType("datetime");
+                entity.Property(e => e.CommunityOwnedDate)
+                    .HasColumnType("datetime")
+                    .HasComment("The date the post became community owned. Present only if post is community wiki'd.");
+
+                entity.Property(e => e.ContentLicense).HasMaxLength(250);
 
                 entity.Property(e => e.CreationDate).HasColumnType("datetime");
 
-                entity.Property(e => e.LastActivityDate).HasColumnType("datetime");
+                entity.Property(e => e.LastActivityDate)
+                    .HasColumnType("datetime")
+                    .HasComment("The date and time of the post's most recent activity.");
 
-                entity.Property(e => e.LastEditDate).HasColumnType("datetime");
+                entity.Property(e => e.LastEditDate)
+                    .HasColumnType("datetime")
+                    .HasComment("The date and time of the most recent edit to the post.");
 
                 entity.Property(e => e.LastEditorDisplayName).HasMaxLength(40);
+
+                entity.Property(e => e.OwnerUserId).HasComment("User Id of the owner. Always -1 for tag wiki entries, i.e. the community user owns them.");
+
+                entity.Property(e => e.ParentId).HasComment("The Id of the Parent. Only present if PostTypeId = 2 (answer).");
 
                 entity.Property(e => e.Tags).HasMaxLength(150);
 
@@ -145,16 +147,20 @@ namespace Showplan.Tests.Data
 
                 entity.Property(e => e.Comment).HasColumnType("ntext");
 
+                entity.Property(e => e.ContentLicense).HasMaxLength(250);
+
                 entity.Property(e => e.CreationDate).HasColumnType("datetime");
 
                 entity.Property(e => e.RevisionGuid)
-                    .IsRequired()
                     .HasMaxLength(36)
                     .IsUnicode(false)
                     .HasColumnName("RevisionGUID")
-                    .IsFixedLength(true);
+                    .IsFixedLength()
+                    .HasComment("At times more than one type of history record can be recorded by a single action. All of these will be grouped using the same RevisionGUID.");
 
-                entity.Property(e => e.Text).HasColumnType("ntext");
+                entity.Property(e => e.Text)
+                    .HasColumnType("ntext")
+                    .HasComment("A raw version of the new value for a given revision. \r\n\r\nIf PostHistoryTypeId in (10,11,12,13,14,15,19,20,35) this column will contain a JSON encoded string with all users who have voted for the PostHistoryTypeId\r\n\r\nIf it is a duplicate close vote, the JSON string will contain an array of original questions as OriginalQuestionIds\r\n\r\nIf PostHistoryTypeId = 17 this column will contain migration details of either from <url> or to <url>");
 
                 entity.Property(e => e.UserDisplayName).HasMaxLength(40);
 
@@ -178,9 +184,7 @@ namespace Showplan.Tests.Data
 
             modelBuilder.Entity<PostHistoryType>(entity =>
             {
-                entity.Property(e => e.Type)
-                    .IsRequired()
-                    .HasMaxLength(50);
+                entity.Property(e => e.Type).HasMaxLength(50);
             });
 
             modelBuilder.Entity<PostLink>(entity =>
@@ -206,46 +210,64 @@ namespace Showplan.Tests.Data
                     .HasConstraintName("FK_PostLinks_RelatedPostId__Posts_Id");
             });
 
+            modelBuilder.Entity<PostTag>(entity =>
+            {
+                entity.HasKey(e => new { e.PostId, e.Tag })
+                    .HasName("PK_PostTags__PostId_Tag");
+
+                entity.Property(e => e.Tag).HasMaxLength(50);
+
+                entity.HasOne(d => d.Post)
+                    .WithMany(p => p.PostTags)
+                    .HasForeignKey(d => d.PostId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PostTags_PostId__Posts_Id");
+            });
+
             modelBuilder.Entity<PostType>(entity =>
             {
-                entity.Property(e => e.Type)
-                    .IsRequired()
-                    .HasMaxLength(50);
+                entity.Property(e => e.Type).HasMaxLength(50);
             });
 
             modelBuilder.Entity<Tag>(entity =>
             {
-                entity.Property(e => e.TagName)
-                    .IsRequired()
-                    .HasMaxLength(150);
+                entity.Property(e => e.TagName).HasMaxLength(150);
             });
 
             modelBuilder.Entity<User>(entity =>
             {
-                entity.HasIndex(e => e.DisplayName, "IX_Users__DisplayName");
+                entity.Property(e => e.AboutMe).HasComment("The user's profile as rendered HTML.");
+
+                entity.Property(e => e.AccountId).HasComment("The user's stack exchange network profile id.");
 
                 entity.Property(e => e.CreationDate).HasColumnType("datetime");
 
-                entity.Property(e => e.DisplayName)
-                    .IsRequired()
-                    .HasMaxLength(40);
+                entity.Property(e => e.DisplayName).HasMaxLength(40);
 
-                entity.Property(e => e.EmailHash).HasMaxLength(40);
+                entity.Property(e => e.DownVotes).HasComment("The number of downvotes a user has cast.");
+
+                entity.Property(e => e.EmailHash)
+                    .HasMaxLength(40)
+                    .HasComment("Always blank.");
 
                 entity.Property(e => e.LastAccessDate).HasColumnType("datetime");
 
                 entity.Property(e => e.Location).HasMaxLength(100);
+
+                entity.Property(e => e.UpVotes).HasComment("The number of upvotes a user has cast.");
+
+                entity.Property(e => e.Views).HasComment("The number of times the profile has been viewed.");
 
                 entity.Property(e => e.WebsiteUrl).HasMaxLength(200);
             });
 
             modelBuilder.Entity<Vote>(entity =>
             {
-                entity.HasIndex(e => new {e.Id, e.PostId}, "IX_Votes__Id_PostId");
-
-                entity.HasIndex(e => e.VoteTypeId, "IX_Votes__VoteTypeId");
+                entity.Property(e => e.Id).HasComment("The bounty amount. Present only if VoteTypeId in (8, 9)");
 
                 entity.Property(e => e.CreationDate).HasColumnType("datetime");
+
+                entity.Property(e => e.UserId).HasComment("The user Id of the voter. Present only if VoteTypeId in (5,8).");
 
                 entity.HasOne(d => d.Post)
                     .WithMany(p => p.Votes)
@@ -268,7 +290,6 @@ namespace Showplan.Tests.Data
             modelBuilder.Entity<VoteType>(entity =>
             {
                 entity.Property(e => e.Name)
-                    .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false);
             });
