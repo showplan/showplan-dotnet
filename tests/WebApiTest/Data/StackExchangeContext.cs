@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Showplan.Tests.Data;
 
-namespace Showplan.Tests.Interceptor7.Data
+namespace WebApiTest.Data
 {
     public partial class StackExchangeContext : DbContext
     {
@@ -31,7 +32,7 @@ namespace Showplan.Tests.Interceptor7.Data
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Data Source=.;Initial Catalog=sports.stackexchange.com;integrated security=true;TrustServerCertificate=True");
+                optionsBuilder.UseSqlServer("Data Source=.;Initial Catalog=sports.stackexchange.com;integrated security=true");
             }
         }
 

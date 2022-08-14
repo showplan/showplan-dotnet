@@ -15,7 +15,8 @@ public class InterceptorTests
     {
         List<ShowPlanXML> showPlans = new();
 
-        var interceptor = new ShowplanInterceptor(s => showPlans.Add(s));
+        var action = new ShowplanXmlAction(s => showPlans.Add(s));
+        var interceptor = new ShowplanInterceptor(action);
         var options = new DbContextOptionsBuilder<StackExchangeContext>()
             .AddInterceptors(interceptor)
             .Options;
