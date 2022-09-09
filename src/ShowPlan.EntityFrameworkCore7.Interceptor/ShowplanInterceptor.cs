@@ -1,6 +1,7 @@
 ﻿using System.Data;
 using System.Data.Common;
 using Microsoft.EntityFrameworkCore.Diagnostics;
+using Microsoft.Extensions.Logging;
 
 namespace ShowPlan.EntityFrameworkCore7.Interceptor;
 
@@ -8,9 +9,9 @@ public class ShowplanInterceptor : IDbCommandInterceptor
 {
     private readonly IShowplanInterceptorAction[] _interceptorActions;
 
-    public ShowplanInterceptor(params IShowplanInterceptorAction[] interceptorActions)
+    public ShowplanInterceptor(IEnumerable<IShowplanInterceptorAction> interceptorActions)
     {
-        _interceptorActions = interceptorActions;
+        _interceptorActions = interceptorActions.ToArray();
     }
 
     public ValueTask<InterceptionResult<DbDataReader>> ReaderExecutingAsync(DbCommand command,

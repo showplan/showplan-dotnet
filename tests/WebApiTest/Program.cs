@@ -12,16 +12,12 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-//builder.Services.AddScoped<IShowplanInterceptorAction, ShowplanLoggerAction>();
-builder.Services.AddScoped<IShowplanInterceptorAction, SpectreShowPlan>();
+builder.Services.AddScoped<IShowplanInterceptorAction, ShowplanLoggerAction>();
+builder.Services.AddTransient<IShowplanInterceptorAction, SpectreShowPlan>();
+builder.Services.AddTransient<ShowplanInterceptor>();
 builder.Services.AddDbContext<StackExchangeContext>((provider, options) =>
 {
-    var interceptorActions = provider.GetServices<IShowplanInterceptorAction>().ToArray();
-    if (interceptorActions.Length > 0)
-    {
-        options.AddInterceptors(new ShowplanInterceptor(interceptorActions));
-    }
-
+    options.AddInterceptors(provider.GetRequiredService<ShowplanInterceptor>());
     options.UseSqlServer("Data Source=.;Initial Catalog=sports.stackexchange.com;integrated security=true;TrustServerCertificate=True");
 });
 
